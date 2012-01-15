@@ -1,9 +1,9 @@
 var net     = require('net'),
-	express = require('express'),
+    express = require('express'),
     app     = express.createServer();
 
 var WEB_PORT = 8080,
-	MUD_PORT = 8000;
+    MUD_PORT = 8000;
 
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
