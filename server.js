@@ -2,11 +2,11 @@ var net     = require('net'),
     fs      = require('fs'),
     express = require('express'),
     app     = express.createServer(),
-	moo     = require('mootools-express');
+    moo     = require('mootools-express');
 
 var WEB_PORT   = 8080,
     MUD_PORT   = 8000,
-	GAME_TITLE = 'Awesome Quest';
+    GAME_TITLE = 'Awesome Quest';
 
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
