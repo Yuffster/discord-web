@@ -1,6 +1,8 @@
 var net     = require('net'),
+    fs      = require('fs'),
     express = require('express'),
-    app     = express.createServer();
+    app     = express.createServer(),
+	moo     = require('mootools-express');
 
 var WEB_PORT = 8080,
     MUD_PORT = 8000;
@@ -9,6 +11,7 @@ app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 
 app.listen(WEB_PORT);
+moo.listen(app, '/scripts/mootools.js')
 
 app.get('/', function(res, req) {
 	req.render('index');
