@@ -1,0 +1,25 @@
+body {
+	background: #00040D;
+}
+
+#output { float: left; }
+#console {
+	width: 700px;
+	height: 500px;
+	background-color: black;
+	color: #ccc;
+	overflow: auto;
+	font-family: monospace;
+}
+#commandLine {
+	width: 700px;
+	height: 25px;
+	background-color: black;
+	color: #ccc;
+	overflow: hidden;
+}
+
+
+#panel {
+	float: right;
+}

@@ -1,0 +1,10 @@
+.ansi-30 { color: black; }
+.ansi-31 { color: red; }
+.ansi-32 { color: green; }
+.ansi-33 { color: #C9C275; }
+.ansi-33 .ansi-1 { color: yellow; font-weight: bold; }
+.ansi-34 { color: blue; }
+.ansi-35 { color: purple; }
+.ansi-36 { color: cyan; }
+.ansi-37 { color: white; }
+.ansi-39 { color: #ccc; }

@@ -1,0 +1,24 @@
+{
+	"name":"discord-web",
+	"description":"Web client for the Discord MUD Engine.",
+	"version":"0.2.0",
+	"repository": {
+		"type": "git",
+		"url": "http://github.com/yuffster/discord-web"
+	},
+	"dependencies": {
+		"mootools":">=1.3.2",
+		"socket.io":">=0.8.7",
+		"optimist":">=0.3.1",
+		"express":">=2.5.6",
+		"ejs":">=0.6.1"
+	},
+	"author": {
+		"name": "Michelle Steigerwalt",
+		"homepage": "http://msteigerwalt.com"
+	},
+	"scripts":{
+		"test": "node ./tests/run_tests.js"
+	},
+	"main": "server.js"
+}

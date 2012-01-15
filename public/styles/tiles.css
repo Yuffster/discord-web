@@ -1,0 +1,54 @@
+table {
+	border: 1px solid #ccc;
+	border-right: none;
+	border-bottom: none;
+	padding: 0;
+	border-collapse: collapse;
+}
+
+td {
+	width: 18px;
+	height: 18px;
+	padding: 0;
+}
+
+.tile {
+	height: 18px;
+	width: 18px;
+	border: 1px solid #ccc;
+}
+
+.tile:hover {
+}
+
+.tile         { background-color: #E6EDD1; }
+.tile.inside  { background-color: #9E886A; }
+.tile.water   { background-color: #96C7F2; }
+.tile.empty   { background-color: #CCCCCC; }
+
+.tile.wall-n { border-top: 1px solid #000;    } 
+.tile.wall-s { border-bottom: 1px solid #000; }
+.tile.wall-e { border-right: 1px solid #000;  }
+.tile.wall-w { border-left: 1px solid #000;   }
+
+.tile.door-n { border-top: 1px dashed #000; } 
+.tile.door-s { border-bottom: 1px dashed #000; }
+.tile.door-e { border-right: 1px dashed #000; }
+.tile.door-w { border-left: 1px dashed #000; }
+
+.tile.current { background-color: yellow; }
+
+.tile.barricade-n { border-top: 2px dotted #000; height: 17px;  } 
+.tile.barricade-s { border-bottom: 2px dotted #000; height: 17px; }
+.tile.barricade-n.barricade-s { height: 16px; }
+.tile.barricade-e { border-right: 2px dotted #000; width: 17px; }
+.tile.barricade-w { border-left: 2px dotted #000;width:17px; }
+.tile.barricade-e.barricade-w { width: 16px; }
+
+.tile { background-position: bottom right; background-repeat: no-repeat; }
+.tile.open-u,.tile.door-u { background-image: url('img/stairs_up.png');}
+.tile.open-d,.tile.door-d { background-image: url('img/stairs_down.png'); }
+.tile.open-u.door-d,.tile.door-u.open-d,.tile.open-u.open-d { background-image: url('img/stairs_up_down.png'); }
+
+.tile .horde {color:red; }
+.tile .human {color:#00C3FF;}
