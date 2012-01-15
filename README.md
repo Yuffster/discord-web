@@ -12,6 +12,6 @@ Installation
 
 `npm install`
 
-`node server.js`
+`node server.js config.example.json`
 
 Then go to [localhost:8080](http://localhost:8080) in your browser.
