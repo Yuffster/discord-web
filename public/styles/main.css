@@ -1,16 +1,26 @@
 body {
-	background: #00040D;
+   background: #00040D;
+	background:url("http://princesse33.free.fr/Dragons/Dragon_head_Wallpaper.jpg") repeat fixed left bottom #00040D;
+}
+
+h1 {
+	color: yellow;
+    font: 50pt Arial Bold;
+    margin: 10px;
+    text-shadow: -1px 2px red, 2px -1px red, 2px 2px red, -1px -1px red;
 }
 
 #output { float: left; }
+
 #console {
 	width: 700px;
 	height: 500px;
-	background-color: black;
+	background-color: rgba(0,0,0,.6);
 	color: #ccc;
 	overflow: auto;
 	font-family: monospace;
 }
+
 #commandLine {
 	width: 700px;
 	height: 25px;

@@ -1,5 +1,5 @@
 table {
-	border: 1px solid #ccc;
+	border: 1px solid transparent;
 	border-right: none;
 	border-bottom: none;
 	padding: 0;
@@ -15,16 +15,16 @@ td {
 .tile {
 	height: 18px;
 	width: 18px;
-	border: 1px solid #ccc;
+	border: 1px solid transparent;
 }
 
 .tile:hover {
 }
 
-.tile         { background-color: #E6EDD1; }
+/*.tile         { background-color: #E6EDD1; }*/
 .tile.inside  { background-color: #9E886A; }
 .tile.water   { background-color: #96C7F2; }
-.tile.empty   { background-color: #CCCCCC; }
+.tile.empty   {  }
 
 .tile.wall-n { border-top: 1px solid #000;    } 
 .tile.wall-s { border-bottom: 1px solid #000; }
