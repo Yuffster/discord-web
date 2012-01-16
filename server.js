@@ -5,51 +5,31 @@ var net     = require('net'),
     app     = express.createServer(),
     moo     = require('mootools-express');
 
-/**
- * Parse the config file to figure out the port and world directory 
- * location.
- */
-var config_file = process.argv[2];
-if (!config_file) {
-	sys.puts("Config file is required. See config.example.json for more info.");
-	sys.puts("Usage: node ./server.js <config file>");
-	process.exit();
-}
+exports.start = function(config) {
 
-try {
-	config = fs.readFileSync(config_file);
-} catch (err) {
-	sys.puts(err);
-	process.exit();
-} 
+	app.use(express.static(config.world_path + '/public'));
+	app.use(express.static(__dirname + '/public'));
+	
+	app.set('view engine', 'ejs');
 
-CONFIG = {};
-eval("CONFIG ="+config);
+	moo.listen(app, '/scripts/mootools.js')
 
-if (!CONFIG) {
-	sys.puts("Could not decode config file.  Please ensure that the file is in "+
-	         "valid JSON format.");
-	process.exit();
-}
-
-app.use(express.static(__dirname + '/public'));
-app.set('view engine', 'ejs');
-
-app.listen(CONFIG.web_port);
-moo.listen(app, '/scripts/mootools.js')
-
-app.get('/', function(res, req) {
-	req.render('index', {game_title:CONFIG.world_name});
-});
-
-var io = require('socket.io').listen(app);
-io.sockets.on('connection', function (socket) {
-	var conn = net.createConnection(CONFIG.game_port);
-	conn.setEncoding('utf-8');
-	conn.on("data", function(data) {
-		socket.emit('data', data);
+	app.get('/', function(res, req) {
+		req.render('index', {game_title:config.world_name});
 	});
-	socket.on("data", function(data) {
-		conn.write(data);
+
+	var io = require('socket.io').listen(app);
+	io.sockets.on('connection', function (socket) {
+		var conn = net.createConnection(config.game_port);
+		conn.setEncoding('utf-8');
+		conn.on("data", function(data) {
+			socket.emit('data', data);
+		});
+		socket.on("data", function(data) {
+			conn.write(data);
+		});
 	});
-});
+	
+	return app;
+	
+};
