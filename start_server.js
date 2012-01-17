@@ -1,6 +1,6 @@
 require('discord').start({
-	name: 'DiscordMUD',
-	world_path: 'example_world',
+	world_name: 'DiscordMUD',
+	world_path: __dirname+'/world',
 	start_room: 'lobby'
 }).listen(8000);
 
