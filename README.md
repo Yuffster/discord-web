@@ -1,10 +1,10 @@
 Discord MMO Client
-------------------------
+========================
 
 This is the web client for Discord, a highly expressive, object-based MMO engine written in JavaScript on top of Node.JS and MooTools.
 
 Usage
-========================
+------------------------
 
     require('discord-web').start({
 		"world_name"  : "DiscordMUD",
