@@ -1,7 +1,7 @@
 {
 	"name":"discord-web",
 	"description":"Web client for the Discord MUD Engine.",
-	"version":"0.6.0",
+	"version":"0.6.1",
 	"repository": {
 		"type": "git",
 		"url": "http://github.com/yuffster/discord-web"
