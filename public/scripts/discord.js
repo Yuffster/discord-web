@@ -35,8 +35,8 @@ Discord = new Class({
 	initialize: function(options) {
 		this.setOptions(options);
 		this.attachEvents();
-		this.connection = io.connect('http://localhost');
-		//this.connection.emit("data", ">>> GUI_ON <<<");
+		this.connection = io.connect('http://'+window.location.hostname);
+		this.connection.emit("data", ">>> GUI_ON <<<");
 		this.connection.on('data', this.handleData.bind(this));
 		this.connection.on('ansi', this.handleANSI.bind(this));
 	},
@@ -66,6 +66,12 @@ Discord = new Class({
 	},
 
 	handleData: function(data) {
+		var my = this;
+		if (data.match(/\\r\\n/)) {
+			return data.split("\\r\\n").each(function(l) {
+				if (l.length) my.handleData(l);
+			});
+		}
 		data = data.trim();
 		var patt = this.options.escapePattern;
 		if (data.match(patt)) {
@@ -76,7 +82,7 @@ Discord = new Class({
 			var obj = JSON.decode(json);
 			if (!obj['handler']) { return; }
 			var handlerMeth = obj.handler+'Handler';
-			if (!this[handlerMeth]) { console.error("No handler found for "+handlerMeth+"."); return; }
+			//if (!this[handlerMeth]) { console.error("No handler found for "+handlerMeth+"."); return; }
 			this[handlerMeth](obj.data);
 		} else {
 			this.consoleOutput(data);
