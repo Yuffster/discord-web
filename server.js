@@ -7,7 +7,8 @@ var net     = require('net'),
 
 exports.start = function(config) {
 
-	app.use(express.static(config.world_path + '/public'));
+	var path = require('path').normalize(config.static_path || config.world_path + "/../public");
+	app.use(express.static(config.static_path || config.world_path + "/../public"));
 	app.use(express.static(__dirname + '/public'));
 
 	app.set('views', (config.views || __dirname+'/views'));
