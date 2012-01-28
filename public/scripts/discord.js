@@ -15,7 +15,7 @@ Discord = new Class({
 	options: {
 		//Server-side escape pattern for JSON data.  The capture group will be
 		//parsed as a JSON object.
-		escapePattern: /^<!-- \n(.*)\n-->$/g,
+		escapePattern: /<!-- \n(.*)\n-->/g,
 		//IDs for the various UI elements.
 		ui: {
 			'map': 'map',
@@ -36,7 +36,7 @@ Discord = new Class({
 		this.setOptions(options);
 		this.attachEvents();
 		this.connection = io.connect('http://localhost');
-		this.connection.emit("data", ">>> GUI_ON <<<");
+		//this.connection.emit("data", ">>> GUI_ON <<<");
 		this.connection.on('data', this.handleData.bind(this));
 		this.connection.on('ansi', this.handleANSI.bind(this));
 	},
