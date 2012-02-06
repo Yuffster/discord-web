@@ -18,7 +18,7 @@ exports.start = function(config) {
 	app.get('/', function(res, req) {
 		req.render('index', {world_name:config.world_name});
 	});
-	
+
 	var io = require('socket.io').listen(app);
 	io.sockets.on('connection', function (socket) {
 		var conn = net.createConnection(config.world_port);
@@ -29,13 +29,12 @@ exports.start = function(config) {
 		socket.on("data", function(data) {
 			conn.write(data);
 		});
+    socket.on("disconnect", function(data) {
+      console.log("OMG DISCONNECT BUYBYE");
+      conn.end();
+    });
 	});
-		
-	return {
-		listen: function(port) {
-			app.listen(port);
-			sys.puts("Webserver listening on port "+port);
-		}
-	}
+	
+	return app;
 	
 };
