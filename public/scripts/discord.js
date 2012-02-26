@@ -1,4 +1,48 @@
 (function() { //Only Discord will end up in the global namespace.
+	
+var ANSI = {
+
+	//Styles
+
+	'reset'     :  0,
+	'bold'      :  1,
+	'/bold'     : 22,
+	'italic'    :  3,
+	'/italic'   : 23,
+	'underline' :  4,
+	'/underline': 24,
+	'conceal'   :  8,
+	'strike'    :  9,
+	'/strike'   : 29,
+	'reverse'   :  7,
+	'blink'     :  5,
+	'blink2'    :  6,
+
+	//Colors
+
+	'black'     : 30,
+	'red'       : 31,
+	'green'     : 32,
+	'yellow'    : 33,
+	'blue'      : 34,
+	'purple'    : 35,
+	'cyan'      : 36,
+	'white'     : 37,
+	'default'   : 39,
+
+	//Backgrounds
+
+	'bgblack'   : 40,
+	'bgred'     : 41,
+	'bggreen'   : 42,
+	'bgyellow'  : 43,
+	'bgblue'    : 44,
+	'bgpurple'  : 45,
+	'bgcyan'    : 46,
+	'bgwhite'   : 47,
+	'bgdefault' : 49
+
+};
 
 Discord = new Class({
 
@@ -105,7 +149,15 @@ Discord = new Class({
 	},
 
 	consoleOutput: function(data) {
-		var classes = [this.nextClass];
+		var classes  = [this.nextClass],
+		    ansi     = data.match(/\u001B\[\d+m/g), my = this,
+			data     = data.replace(/\u001B\[\d+m/g, '');
+		if (ansi) {
+			ansi.each(function(code) {
+				my.handleANSI(code.match(/\d+/)[0]);
+			});
+		}
+		data = data.replace(/\u001B\[\d+m/g, '');
 		this.activeANSI.reverse().each(function(code) { classes.push('ansi-'+code); }, this);
 		if (this.resetLine) { this.activeANSI = []; this.resetLine = false; }
 		this.getUI('console').adopt(new Element('div', {text:data, 'class':classes.join(' ')}));
@@ -127,7 +179,6 @@ Discord = new Class({
 	 * status area.
 	 */
 	statusHandler: function(data) {
-		
 	},
 	
 	/**
