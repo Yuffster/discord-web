@@ -20,7 +20,7 @@ exports.start = function(config) {
 		req.render('index', {world_name:config.world_name});
 	});
 	
-	var io = require('socket.io').listen(app);
+	var io = require('socket.io').listen(app, { log: false });
 	io.sockets.on('connection', function (socket) {
 		var conn = net.createConnection(config.world_port);
 		conn.setEncoding('utf-8');
