@@ -1,5 +1,5 @@
 var net     = require('net'),
-    sys     = require('sys'),
+    util = require('util'),
     fs      = require('fs'),
     express = require('express'),
     app     = express.createServer(),
@@ -35,7 +35,7 @@ exports.start = function(config) {
 	return {
 		listen: function(port) {
 			app.listen(port);
-			sys.puts("Webserver listening on port "+port);
+			util.puts("Webserver listening on port "+port);
 		}
 	}
 	
