@@ -46,7 +46,7 @@ exports.start = function(config) {
 				});
 			});
 
-			sys.puts("Socket is listening to "+config.word_port);
+			sys.puts("Socket is listening to "+config.world_port);
 
 
 		}
